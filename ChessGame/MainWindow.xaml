@@ -1,0 +1,165 @@
+﻿<Window x:Class="ChessGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:res="clr-namespace:ChessGame.Properties"
+        mc:Ignorable="d"
+        Title="Chess Game"
+        DataContext="{StaticResource MainWindowViewModel}">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ChessResources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                <Setter Property="Height" Value="50"/>
+            </Style>
+        </ResourceDictionary>        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1"
+                    Grid.Row="0">
+            <TextBlock Text="A" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="B" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="C" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="D" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="E" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="F" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="G" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="H" Width="50" TextAlignment="Center"/>
+        </StackPanel>
+        <ListBox Grid.Column="0"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Center"
+                 Grid.Row="1">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem>
+                <TextBlock Text="8" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="7" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="6" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="5" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="4" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="3" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="2" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="1" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+        </ListBox>    
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1"
+                    Grid.Row="2">
+            <TextBlock Text="A" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="B" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="C" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="D" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="E" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="F" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="G" Width="50" TextAlignment="Center"/>
+            <TextBlock Text="H" Width="50" TextAlignment="Center"/>
+        </StackPanel>
+        <ListBox Grid.Column="2"
+                 VerticalContentAlignment="Center"
+                 HorizontalContentAlignment="Center"
+                 Grid.Row="1">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem>
+                <TextBlock Text="8" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="7" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="6" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="5" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="4" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="3" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="2" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+            <ListBoxItem>
+                <TextBlock Text="1" 
+                       TextAlignment="Center"/>
+            </ListBoxItem>
+        </ListBox>
+        <ItemsControl Name="ChessBoard"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      VerticalAlignment="Top"
+                      HorizontalAlignment="Left"
+                      ItemsSource="{Binding ChessBoard}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas Height="400" Width="400" IsItemsHost="True" Background="{StaticResource Checkerboard}"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Width="50" Height="50" Style="{StaticResource ChessPieceStyle}" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemContainerStyle>
+                <Style >
+                    <Setter Property="Canvas.Left" Value="{Binding Pos.X}" />
+                    <Setter Property="Canvas.Top" Value="{Binding Pos.Y}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>            
+        </ItemsControl>
+    </Grid>
+</Window>
