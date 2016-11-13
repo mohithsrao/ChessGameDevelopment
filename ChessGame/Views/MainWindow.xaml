@@ -10,7 +10,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ChessResources.xaml"/>
+                <ResourceDictionary Source="..\Resource\ChessResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                 <Setter Property="Height" Value="50"/>
