@@ -3,7 +3,7 @@ using static ChessInfrastructure.ChessEnums;
 
 namespace ChessElements
 {
-    public class ChessPiece : ObservableClass
+    public class PieceBase : ObservableClass
     {
         private PieceType _Type;
         public PieceType Type
@@ -12,8 +12,8 @@ namespace ChessElements
             set { _Type = value; RaisePropertyChanged("Type"); }
         }
 
-        private Player _Player;
-        public Player Player
+        private PieceColor _Player;
+        public PieceColor Player
         {
             get { return _Player; }
             set { _Player = value; RaisePropertyChanged("Player"); }

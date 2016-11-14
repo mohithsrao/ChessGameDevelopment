@@ -14,7 +14,7 @@ namespace ChessElements
             _column = column;
         }
 
-        public Tile(Rows row, Columns column, ChessPiece piece)
+        public Tile(Rows row, Columns column, PieceBase piece)
         {
             _row = row;
             _column = column;
@@ -42,8 +42,8 @@ namespace ChessElements
             set { _column = value; RaisePropertyChanged("Column"); }
         }
 
-        private ChessPiece _piece;
-        public ChessPiece Piece
+        private PieceBase _piece;
+        public PieceBase Piece
         {
             get { return _piece; }
             set { _piece = value; RaisePropertyChanged("Piece"); }

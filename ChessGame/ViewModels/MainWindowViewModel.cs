@@ -1,7 +1,6 @@
 ﻿using ChessElements;
 using ChessInfrastructure;
 using System.Collections.ObjectModel;
-using static ChessInfrastructure.ChessEnums;
 
 namespace ChessGame.ViewModels
 {
@@ -17,7 +16,7 @@ namespace ChessGame.ViewModels
             {
                 if (_board == value) return;
                 _board = value;
-                RaisePropertyChanged("ChessBoard");
+                RaisePropertyChanged("Board");
             }
         }
 

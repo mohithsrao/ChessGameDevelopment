@@ -12,7 +12,7 @@
             King
         }
 
-        public enum Player
+        public enum PieceColor
         {
             White,
             Black
