@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ChessGame"
              xmlns:ViewModels="clr-namespace:ChessGame.ViewModels"
-             StartupUri="MainWindow.xaml">
+             StartupUri="../Views/MainWindow.xaml">
     <Application.Resources>
         <ViewModels:MainWindowViewModel x:Key="MainWindowViewModel"/>
     </Application.Resources>

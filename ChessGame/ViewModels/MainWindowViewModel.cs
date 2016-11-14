@@ -9,14 +9,14 @@ namespace ChessGame.ViewModels
     {
         #region Properties
 
-        private ObservableCollection<ChessPiece> _chessBoard = new ObservableCollection<ChessPiece>();
-        public ObservableCollection<ChessPiece> ChessBoard
+        private ObservableCollection<Tile> _board;
+        public ObservableCollection<Tile> Board
         {
-            get { return _chessBoard; }
+            get { return _board; }
             set
             {
-                if (_chessBoard == value) return;
-                _chessBoard = value;
+                if (_board == value) return;
+                _board = value;
                 RaisePropertyChanged("ChessBoard");
             }
         }
@@ -42,41 +42,7 @@ namespace ChessGame.ViewModels
         /// </summary>
         private void InitiateGUI()
         {
-            ChessBoard = new ObservableCollection<ChessPiece>
-        {
-            new ChessPiece{Row = Rows.Two,Column = Columns.A, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.B, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.C, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.D, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.E, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.F, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.G, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.Two,Column = Columns.H, Type=PieceType.Pawn, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.A, Type=PieceType.Rook, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.B, Type=PieceType.Knight, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.C, Type=PieceType.Bishop, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.D, Type=PieceType.King, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.E, Type=PieceType.Queen, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.F, Type=PieceType.Bishop, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.G, Type=PieceType.Knight, Player=Player.White},
-            new ChessPiece{Row = Rows.One,Column = Columns.H, Type=PieceType.Rook, Player=Player.White},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.A, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.B, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.C, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.D, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.E, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.F, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.G, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Seven,Column = Columns.H, Type=PieceType.Pawn, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.A, Type=PieceType.Rook, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.B, Type=PieceType.Knight, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.C, Type=PieceType.Bishop, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.D, Type=PieceType.King, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.E, Type=PieceType.Queen, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.F, Type=PieceType.Bishop, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.G, Type=PieceType.Knight, Player=Player.Black},
-            new ChessPiece{Row = Rows.Eight,Column = Columns.H, Type=PieceType.Rook, Player=Player.Black}
-        };
+            Board = ChessBoard.Instance.CreateChessBoard();
         }
 
         #endregion

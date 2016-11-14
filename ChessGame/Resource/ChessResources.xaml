@@ -25,8 +25,8 @@
         <Style.Triggers>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Pawn}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Pawn}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_white_pawn_T.png" />
@@ -34,8 +34,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Rook}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Rook}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_white_rook_T.png" />
@@ -43,8 +43,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Knight}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Knight}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_white_knight_T.png" />
@@ -52,8 +52,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Bishop}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Bishop}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_white_bishop_T.png" />
@@ -61,8 +61,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Queen}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Queen}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_white_queen_T.png" />
@@ -70,8 +70,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.King}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.King}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.White}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_white_king_T.png" />
@@ -79,8 +79,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Pawn}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Pawn}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_black_pawn_T.png" />
@@ -88,8 +88,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Rook}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Rook}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_black_rook_T.png" />
@@ -97,8 +97,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Knight}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Knight}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_black_knight_T.png" />
@@ -106,8 +106,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Bishop}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Bishop}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_black_bishop_T.png" />
@@ -115,8 +115,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.Queen}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.Queen}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_black_queen_T.png" />
@@ -124,8 +124,8 @@
             </MultiDataTrigger>
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding Type}" Value="{x:Static infra:ChessEnums+PieceType.King}"/>
-                    <Condition Binding="{Binding Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
+                    <Condition Binding="{Binding Piece.Type}" Value="{x:Static infra:ChessEnums+PieceType.King}"/>
+                    <Condition Binding="{Binding Piece.Player}" Value="{x:Static infra:ChessEnums+Player.Black}"/>
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Image.Source" Value="/Images/chess_piece_black_king_T.png"/>
