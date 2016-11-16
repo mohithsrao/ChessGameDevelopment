@@ -3,7 +3,7 @@ using static ChessInfrastructure.ChessEnums;
 
 namespace ChessElements
 {
-    public class PieceBase : ObservableClass
+    public abstract class PieceBase : ObservableClass
     {
         private PieceType _Type;
         public PieceType Type

@@ -7,11 +7,22 @@ namespace ChessElements
     public class ChessBoard
     {
         #region Singleton
-        private static ChessBoard _instance = new ChessBoard();
+        private static ChessBoard _instance;
 
+        /// <summary>
+        /// Static constructor to initiate the Instance Variable
+        /// </summary>
+        static ChessBoard()
+        {
+            _instance = new ChessBoard();
+        }
+
+        /// <summary>
+        /// Private Constructor to restrict other classes to create instances of this class
+        /// </summary>
         private ChessBoard()
         {
-
+            _board = CreateChessBoard();
         }
 
         public static ChessBoard Instance
@@ -20,18 +31,35 @@ namespace ChessElements
         }
         #endregion
 
-        public ObservableCollection<Tile> CreateChessBoard()
+        #region Variables
+
+        private ObservableCollection<Tile> _board;
+
+        public ObservableCollection<Tile> Board
+        {
+            get { return _board; }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        /// <summary>
+        /// Creates an instance of teh board with all the 8*8 board tiles and Chess Pieces on them
+        /// </summary>
+        /// <returns></returns>
+        private ObservableCollection<Tile> CreateChessBoard()
         {
             var board = new ObservableCollection<Tile>
         {
-            new Tile(Rows.One,Columns.A,  new PieceBase() { Type=PieceType.Rook, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.B,  new PieceBase() { Type=PieceType.Knight, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.C,  new PieceBase() { Type=PieceType.Bishop, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.D,  new PieceBase() { Type=PieceType.King, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.E,  new PieceBase() { Type=PieceType.Queen, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.F,  new PieceBase() { Type=PieceType.Bishop, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.G,  new PieceBase() { Type=PieceType.Knight, Player=PieceColor.White}),
-            new Tile(Rows.One,Columns.H,  new PieceBase() { Type=PieceType.Rook, Player=PieceColor.White}),
+            new Tile(Rows.One,Columns.A,  new Rook(PieceColor.White)),
+            new Tile(Rows.One,Columns.B,  new Knight(PieceColor.White)),
+            new Tile(Rows.One,Columns.C,  new Bishop(PieceColor.White)),
+            new Tile(Rows.One,Columns.D,  new King(PieceColor.White)),
+            new Tile(Rows.One,Columns.E,  new Queen(PieceColor.White)),
+            new Tile(Rows.One,Columns.F,  new Bishop(PieceColor.White)),
+            new Tile(Rows.One,Columns.G,  new Knight(PieceColor.White)),
+            new Tile(Rows.One,Columns.H,  new Rook(PieceColor.White)),
 
             new Tile(Rows.Two,Columns.A, new Pawn(PieceColor.White)),
             new Tile(Rows.Two,Columns.B, new Pawn(PieceColor.White)),
@@ -87,16 +115,19 @@ namespace ChessElements
             new Tile(Rows.Seven,Columns.G,  new Pawn(PieceColor.Black)),
             new Tile(Rows.Seven,Columns.H,  new Pawn(PieceColor.Black)),
 
-            new Tile(Rows.Eight,Columns.A,  new PieceBase() { Type=PieceType.Rook, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.B,  new PieceBase() { Type=PieceType.Knight, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.C,  new PieceBase() { Type=PieceType.Bishop, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.D,  new PieceBase() { Type=PieceType.King, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.E,  new PieceBase() { Type=PieceType.Queen, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.F,  new PieceBase() { Type=PieceType.Bishop, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.G,  new PieceBase() { Type=PieceType.Knight, Player=PieceColor.Black}),
-            new Tile(Rows.Eight,Columns.H,  new PieceBase() { Type=PieceType.Rook, Player=PieceColor.Black})
+            new Tile(Rows.Eight,Columns.A,  new Rook(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.B,  new Knight(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.C,  new Bishop(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.D,  new King(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.E,  new Queen(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.F,  new Bishop(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.G,  new Knight(PieceColor.Black)),
+            new Tile(Rows.Eight,Columns.H,  new Rook(PieceColor.Black))
         };
             return board;
         }
+
+        #endregion
+
     }
 }

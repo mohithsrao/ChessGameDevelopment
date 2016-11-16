@@ -41,7 +41,7 @@ namespace ChessGame.ViewModels
         /// </summary>
         private void InitiateGUI()
         {
-            Board = ChessBoard.Instance.CreateChessBoard();
+            Board = ChessBoard.Instance.Board;
         }
 
         #endregion
