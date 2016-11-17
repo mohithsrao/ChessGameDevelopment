@@ -1,10 +1,11 @@
 ﻿using ChessElements.Pieces;
 using System.Collections.ObjectModel;
+using System.Linq;
 using static ChessInfrastructure.ChessEnums;
 
 namespace ChessElements
 {
-    public class ChessBoard
+    public sealed class ChessBoard
     {
         #region Singleton
         private static ChessBoard _instance;
@@ -126,8 +127,38 @@ namespace ChessElements
         };
             return board;
         }
-
+        
         #endregion
 
+        #region Public Methods
+
+        public Tile[,] GetSurroundingTiles(Tile tile, int areaLength)
+        {
+            var tileSquare = new Tile[areaLength, areaLength];
+
+            var ioffset = (int)tile.Row + (areaLength / 2);
+            for (int i = 0; i < areaLength; i++)
+            {
+                if ((ioffset > (int)Rows.One) || (ioffset < (int)Rows.Seven)) { }
+                else
+                {
+                    var joffset = (int)tile.Column + (areaLength / 2);
+                    for (int j = 0; j < areaLength; j++)
+                    {
+                        if ((joffset > (int)Columns.H) || (joffset < (int)Columns.A)) { }
+                        else
+                        {
+                            tileSquare[areaLength - i - 1, areaLength - j - 1] = Board.FirstOrDefault(x => (int)x.Row == ioffset && (int)x.Column == joffset);
+                        }
+                        joffset--;
+                    }
+                }
+                ioffset--;                
+            }
+
+            return tileSquare;
+        }
+
+        #endregion
     }
 }

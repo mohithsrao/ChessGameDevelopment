@@ -1,4 +1,5 @@
-﻿using ChessInfrastructure;
+﻿using System;
+using ChessInfrastructure;
 using static ChessInfrastructure.ChessEnums;
 
 namespace ChessElements
@@ -17,6 +18,16 @@ namespace ChessElements
         {
             get { return _Player; }
             set { _Player = value; RaisePropertyChanged("Player"); }
+        }
+
+        public virtual void Move()
+        {
+
+        }
+
+        public virtual void GetMoveList(Tile tile)
+        {
+
         }
     }
 }

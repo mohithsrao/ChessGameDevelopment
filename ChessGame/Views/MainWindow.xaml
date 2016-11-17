@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:res="clr-namespace:ChessGame.Properties"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
+        xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
         mc:Ignorable="d"
         Title="Chess Game"
         DataContext="{StaticResource MainWindowViewModel}">
@@ -152,12 +154,18 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Image Width="50" Height="50" Style="{StaticResource ChessPieceStyle}" />
+                        <Image Width="50" Height="50" Style="{StaticResource ChessPieceStyle}" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDown">
+                                    <ic:CallMethodAction MethodName="Tile_MouseDown" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Image>
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
-                <Style >
+                <Style>
                     <Setter Property="Canvas.Left" Value="{Binding Pos.X}" />
                     <Setter Property="Canvas.Top" Value="{Binding Pos.Y}" />
                 </Style>

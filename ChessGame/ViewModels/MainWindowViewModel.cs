@@ -1,6 +1,8 @@
 ﻿using ChessElements;
 using ChessInfrastructure;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ChessGame.ViewModels
 {
@@ -42,6 +44,16 @@ namespace ChessGame.ViewModels
         private void InitiateGUI()
         {
             Board = ChessBoard.Instance.Board;
+        }
+
+        #endregion
+
+        #region Public Methods
+        
+        public void Tile_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var tile = (sender as Image).DataContext as Tile;
+            tile.Piece.GetMoveList(tile);
         }
 
         #endregion

@@ -22,6 +22,7 @@ namespace ChessElements
         }
 
         #endregion
+        #region Properties
 
         public Point Pos
         {
@@ -48,5 +49,10 @@ namespace ChessElements
             get { return _piece; }
             set { _piece = value; RaisePropertyChanged("Piece"); }
         }
+        #endregion
+
+        #region Public Methods
+
+        #endregion
     }
 }
