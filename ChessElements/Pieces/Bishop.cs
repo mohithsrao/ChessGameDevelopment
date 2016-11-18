@@ -5,9 +5,9 @@ namespace ChessElements.Pieces
     public class Bishop : PieceBase
     {
         #region Constructor
-        public Bishop(PieceColor player)
+        public Bishop(PieceColor color)
         {
-            base.Player = player;
+            base.Color = color;
             base.Type = PieceType.Bishop;
         }
         #endregion

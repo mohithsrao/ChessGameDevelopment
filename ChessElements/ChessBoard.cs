@@ -1,4 +1,5 @@
 ﻿using ChessElements.Pieces;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using static ChessInfrastructure.ChessEnums;
@@ -132,28 +133,37 @@ namespace ChessElements
 
         #region Public Methods
 
+        /// <summary>
+        /// Method to get the tiles surrounding the Given tile from the chess board,
+        /// If the co-ordinates crosses teh board border null is returned in those locations.
+        /// </summary>
+        /// <param name="tile">The Center tile arround which to get the surrounding tile data</param>
+        /// <param name="areaLength">The dimension of the Square Area(Should always be an odd number)</param>
+        /// <returns>A 2 Dimentional array of teh tile surrounding the passed tile</returns>
         public Tile[,] GetSurroundingTiles(Tile tile, int areaLength)
         {
-            var tileSquare = new Tile[areaLength, areaLength];
+            if(areaLength%2 == 0) throw new ArgumentException("Argument areaLength cannot be even");
 
-            var ioffset = (int)tile.Row + (areaLength / 2);
+            var tileSquare = new Tile[areaLength, areaLength];//Initiating 2D Array of required length
+
+            var rowOffset = (int)tile.Row + (areaLength / 2);//Calculate Row Offset
             for (int i = 0; i < areaLength; i++)
             {
-                if ((ioffset > (int)Rows.One) || (ioffset < (int)Rows.Seven)) { }
+                if ((rowOffset > (int)Rows.One) || (rowOffset < (int)Rows.Seven)) { }//IF Row Coordinate Offset falls within the board
                 else
                 {
-                    var joffset = (int)tile.Column + (areaLength / 2);
+                    var columnOffset = (int)tile.Column + (areaLength / 2);//Calculate column Offset
                     for (int j = 0; j < areaLength; j++)
                     {
-                        if ((joffset > (int)Columns.H) || (joffset < (int)Columns.A)) { }
+                        if ((columnOffset > (int)Columns.H) || (columnOffset < (int)Columns.A)) { }//IF Column Coordinate Offset falls within the board
                         else
                         {
-                            tileSquare[areaLength - i - 1, areaLength - j - 1] = Board.FirstOrDefault(x => (int)x.Row == ioffset && (int)x.Column == joffset);
+                            tileSquare[areaLength - i - 1, areaLength - j - 1] = Board.FirstOrDefault(x => (int)x.Row == rowOffset && (int)x.Column == columnOffset);//Fill 2D Array with data from board object
                         }
-                        joffset--;
+                        columnOffset--;//Decrement Column Offset
                     }
                 }
-                ioffset--;                
+                rowOffset--;//Decrement Row Offset     
             }
 
             return tileSquare;

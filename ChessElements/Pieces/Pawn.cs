@@ -6,29 +6,39 @@ namespace ChessElements.Pieces
     public class Pawn : PieceBase
     {
         #region Private Variables
-
-        private static Tile[,] _movementArea;
+        
         private const int SQUAREAREALENGTH = 5;
 
         #endregion
 
         #region Constructor
 
-        static Pawn()
+        /// <summary>
+        /// Constructor that takes in the Piece color 
+        /// </summary>
+        /// <param name="player"></param>
+        public Pawn(PieceColor color)
         {
-            _movementArea = new Tile[SQUAREAREALENGTH, SQUAREAREALENGTH];
-        }
-
-        public Pawn(PieceColor player)
-        {
-            base.Player = player;
+            base.Color = color;
             base.Type = PieceType.Pawn;
         }
+
         #endregion
 
         #region Private Methods
-        
-        
+
+        private List<Tile> GetList(Tile[,] list,PieceColor color,Rows row)
+        {
+            var moveList = new List<Tile>();
+            int maxDistance = (row == Rows.Two || row == Rows.Seven) ? 2 : 1;
+            var center = (SQUAREAREALENGTH / 2);
+            for (int i = 1; i <= maxDistance; i++)
+            {
+                //TODO : Check if piece exists in the tile for movement
+                moveList.Add(list[(color == PieceColor.White) ? center - i : center + i, center]);
+            }
+            return moveList;
+        }
 
         #endregion
 
@@ -39,9 +49,11 @@ namespace ChessElements.Pieces
 
         }
 
-        public override void GetMoveList(Tile tile)
+        public override List<Tile> GetMoveList(Tile tile)
         {
             var list = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
+            
+            return GetList(list,tile.Piece.Color,tile.Row);
         }
 
         #endregion

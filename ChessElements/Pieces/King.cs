@@ -5,9 +5,9 @@ namespace ChessElements.Pieces
     public class King : PieceBase
     {
         #region Constructor
-        public King(PieceColor player)
+        public King(PieceColor color)
         {
-            base.Player = player;
+            base.Color = color;
             base.Type = PieceType.King;
         }
         #endregion

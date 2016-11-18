@@ -5,9 +5,9 @@ namespace ChessElements.Pieces
     public class Queen : PieceBase
     {
         #region Constructor
-        public Queen(PieceColor player)
+        public Queen(PieceColor color)
         {
-            base.Player = player;
+            base.Color = color;
             base.Type = PieceType.Queen;
         }
         #endregion

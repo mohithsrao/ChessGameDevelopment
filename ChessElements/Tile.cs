@@ -8,12 +8,23 @@ namespace ChessElements
     {
         #region Constructor
 
+        /// <summary>
+        /// Constructor to take in only Row and Column positions
+        /// </summary>
+        /// <param name="row">Row Coordinate</param>
+        /// <param name="column">Column Coordinate</param>
         public Tile(Rows row, Columns column)
         {
             _row = row;
             _column = column;
         }
 
+        /// <summary>
+        /// Constructor to take in Row,Column and piece data
+        /// </summary>
+        /// <param name="row">Row Coordinate</param>
+        /// <param name="column">Column Coordinate</param>
+        /// <param name="piece">Chess piece placed on the tile</param>
         public Tile(Rows row, Columns column, PieceBase piece)
         {
             _row = row;
@@ -22,8 +33,13 @@ namespace ChessElements
         }
 
         #endregion
+
         #region Properties
 
+        /// <summary>
+        /// Position on the Canvas in GUI,
+        /// 50d is hardcoded as it is the size of the square on the chess board
+        /// </summary>
         public Point Pos
         {
             get { return new Point((int)Column * 50d, (int)Row * 50d); }

@@ -50,6 +50,11 @@ namespace ChessGame.ViewModels
 
         #region Public Methods
         
+        /// <summary>
+        /// Method hit on select of any piece
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Tile_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var tile = (sender as Image).DataContext as Tile;

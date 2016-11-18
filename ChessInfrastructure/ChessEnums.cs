@@ -2,6 +2,9 @@
 {
     public static class ChessEnums
     {
+        /// <summary>
+        /// Enum to denote Piece type
+        /// </summary>
         public enum PieceType
         {
             Pawn,
@@ -12,12 +15,18 @@
             King
         }
 
+        /// <summary>
+        /// Enum to denote Color od pieces
+        /// </summary>
         public enum PieceColor
         {
             White,
             Black
         }
 
+        /// <summary>
+        /// Enum to denote rows in the game
+        /// </summary>
         public enum Rows
         {
             One = 7,
@@ -30,6 +39,9 @@
             Eight = 0
         }
 
+        /// <summary>
+        /// Enum to denote Columns in the game
+        /// </summary>
         public enum Columns
         {
             A = 0,
