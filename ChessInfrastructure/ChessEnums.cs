@@ -53,5 +53,15 @@
             G = 6,
             H = 7
         }
+
+        /// <summary>
+        /// Enum to denote Tile background color
+        /// </summary>
+        public enum TileBackground
+        {
+            Transparent,
+            Green,
+            Red
+        }
     }
 }

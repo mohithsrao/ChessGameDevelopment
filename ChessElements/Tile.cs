@@ -70,6 +70,18 @@ namespace ChessElements
         {
             get { return Piece == null; }
         }
+
+        private TileBackground _background = TileBackground.Transparent;
+        public TileBackground Background
+        {
+            get { return _background; }
+            set
+            {
+                _background = value;
+                RaisePropertyChanged("Background");
+            }
+        }
+
         #endregion
 
         #region Public Methods

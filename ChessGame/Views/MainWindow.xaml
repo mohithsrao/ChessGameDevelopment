@@ -6,6 +6,7 @@
         xmlns:res="clr-namespace:ChessGame.Properties"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
         xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+        xmlns:conv="clr-namespace:ChessGame.Converters"
         mc:Ignorable="d"
         Title="Chess Game"
         DataContext="{StaticResource MainWindowViewModel}">
@@ -17,6 +18,7 @@
             <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                 <Setter Property="Height" Value="50"/>
             </Style>
+            <conv:BackgroundConverter x:Key="BackgroundConverter"/>
         </ResourceDictionary>        
     </Window.Resources>
     <Grid>
@@ -153,15 +155,19 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
-                        <Image Width="50" Height="50" Style="{StaticResource ChessPieceStyle}" >
+                    <Border Width="50" 
+                            Height="50" 
+                            BorderBrush="{Binding Background,Converter={StaticResource BackgroundConverter}}"
+                            BorderThickness="3">
+                        <Image Margin="3,3,3,3" 
+                            Style="{StaticResource ChessPieceStyle}" >
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseDown">
                                     <ic:CallMethodAction MethodName="Tile_MouseDown" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </Image>
-                    </Grid>
+                    </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>

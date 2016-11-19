@@ -57,6 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BackgroundConverter.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="Resource\ChessResources.xaml">
       <SubType>Designer</SubType>

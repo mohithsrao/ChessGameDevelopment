@@ -38,6 +38,7 @@ namespace ChessElements.Pieces
                 
                 if (nextTile.IsEmptyTile)
                 {
+                    nextTile.Background = TileBackground.Green;
                     moveList.Add(nextTile);
                 }
             }
@@ -55,9 +56,9 @@ namespace ChessElements.Pieces
 
         public override List<Tile> GetMoveList(Tile tile)
         {
-            var list = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
-            
-            return GetList(list,tile);
+            var listArea = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
+            var list = GetList(listArea, tile);
+            return list;
         }
 
         #endregion

@@ -1,6 +1,7 @@
 ﻿using ChessElements;
 using ChessInfrastructure;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -57,7 +58,8 @@ namespace ChessGame.ViewModels
         /// <param name="e"></param>
         public void Tile_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var tile = (sender as Image).DataContext as Tile;
+            var tile = (sender as FrameworkElement).DataContext as Tile;
+            if (tile == null) return;
             tile.Piece.GetMoveList(tile);
         }
 
