@@ -65,6 +65,11 @@ namespace ChessElements
             get { return _piece; }
             set { _piece = value; RaisePropertyChanged("Piece"); }
         }
+        
+        public bool IsEmptyTile
+        {
+            get { return Piece == null; }
+        }
         #endregion
 
         #region Public Methods

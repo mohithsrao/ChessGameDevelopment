@@ -27,15 +27,19 @@ namespace ChessElements.Pieces
 
         #region Private Methods
 
-        private List<Tile> GetList(Tile[,] list,PieceColor color,Rows row)
+        private List<Tile> GetList(Tile[,] list,Tile tile)
         {
             var moveList = new List<Tile>();
-            int maxDistance = (row == Rows.Two || row == Rows.Seven) ? 2 : 1;
+            int maxDistance = (tile.Row == Rows.Two || tile.Row == Rows.Seven) ? 2 : 1;
             var center = (SQUAREAREALENGTH / 2);
             for (int i = 1; i <= maxDistance; i++)
             {
-                //TODO : Check if piece exists in the tile for movement
-                moveList.Add(list[(color == PieceColor.White) ? center - i : center + i, center]);
+                var nextTile = list[(tile.Piece.Color == PieceColor.White) ? center - i : center + i, center];
+                
+                if (nextTile.IsEmptyTile)
+                {
+                    moveList.Add(nextTile);
+                }
             }
             return moveList;
         }
@@ -53,7 +57,7 @@ namespace ChessElements.Pieces
         {
             var list = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
             
-            return GetList(list,tile.Piece.Color,tile.Row);
+            return GetList(list,tile);
         }
 
         #endregion

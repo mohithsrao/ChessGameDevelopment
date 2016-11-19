@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessElements", "ChessEleme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessInfrastructure", "ChessInfrastructure\ChessInfrastructure.csproj", "{175786EC-C9C8-4645-A495-AD1F9746EC5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessElements_Tests", "ChessElements_Tests\ChessElements_Tests.csproj", "{B1ABF208-DFFF-4D6F-B0CC-40F52569A23D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{A9641103-F302-4F68-AF48-AF13A933FA38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +31,15 @@ Global
 		{175786EC-C9C8-4645-A495-AD1F9746EC5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{175786EC-C9C8-4645-A495-AD1F9746EC5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{175786EC-C9C8-4645-A495-AD1F9746EC5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1ABF208-DFFF-4D6F-B0CC-40F52569A23D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1ABF208-DFFF-4D6F-B0CC-40F52569A23D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1ABF208-DFFF-4D6F-B0CC-40F52569A23D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1ABF208-DFFF-4D6F-B0CC-40F52569A23D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1ABF208-DFFF-4D6F-B0CC-40F52569A23D} = {A9641103-F302-4F68-AF48-AF13A933FA38}
 	EndGlobalSection
 EndGlobal

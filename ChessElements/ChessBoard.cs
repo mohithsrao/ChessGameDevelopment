@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using ChessElements.Resources;
 using static ChessInfrastructure.ChessEnums;
 
 namespace ChessElements
@@ -128,28 +129,29 @@ namespace ChessElements
         };
             return board;
         }
-        
+
         #endregion
 
         #region Public Methods
-
+        
         /// <summary>
         /// Method to get the tiles surrounding the Given tile from the chess board,
         /// If the co-ordinates crosses teh board border null is returned in those locations.
         /// </summary>
         /// <param name="tile">The Center tile arround which to get the surrounding tile data</param>
         /// <param name="areaLength">The dimension of the Square Area(Should always be an odd number)</param>
-        /// <returns>A 2 Dimentional array of teh tile surrounding the passed tile</returns>
+        /// <returns>A 2 Dimentional array of teh tile surrounding the passed tile</returns>        
         public Tile[,] GetSurroundingTiles(Tile tile, int areaLength)
         {
-            if(areaLength%2 == 0) throw new ArgumentException("Argument areaLength cannot be even");
+            if (tile == null) throw new ArgumentNullException("tile", Resource.TileEmpty);
+            if (areaLength%2 == 0) throw new ArgumentException(string.Format(Resource.NotOddNumber, "areaLength"));
 
             var tileSquare = new Tile[areaLength, areaLength];//Initiating 2D Array of required length
 
             var rowOffset = (int)tile.Row + (areaLength / 2);//Calculate Row Offset
             for (int i = 0; i < areaLength; i++)
             {
-                if ((rowOffset > (int)Rows.One) || (rowOffset < (int)Rows.Seven)) { }//IF Row Coordinate Offset falls within the board
+                if ((rowOffset > (int)Rows.One) || (rowOffset < (int)Rows.Eight)) { }//IF Row Coordinate Offset falls within the board
                 else
                 {
                     var columnOffset = (int)tile.Column + (areaLength / 2);//Calculate column Offset
