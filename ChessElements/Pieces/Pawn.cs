@@ -48,7 +48,7 @@ namespace ChessElements.Pieces
 
         #region Public Methods
 
-        public override void Move()
+        public override void Move(Tile fromTile,Tile toTile)
         {
 
         }

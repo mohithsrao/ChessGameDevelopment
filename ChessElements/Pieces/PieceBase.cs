@@ -21,7 +21,7 @@ namespace ChessElements
             set { _color = value; RaisePropertyChanged("Color"); }
         }
 
-        public virtual void Move()
+        public virtual void Move(Tile fromTile, Tile toTile)
         {
 
         }
