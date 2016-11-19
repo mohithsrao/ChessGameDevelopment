@@ -30,7 +30,7 @@ namespace ChessElements.Pieces
         private List<Tile> GetList(Tile[,] list,Tile tile)
         {
             var moveList = new List<Tile>();
-            int maxDistance = (tile.Row == Rows.Two || tile.Row == Rows.Seven) ? 2 : 1;
+            int maxDistance = ((tile.Row == Rows.Two && tile.Piece.Color == PieceColor.White)|| (tile.Row == Rows.Seven && tile.Piece.Color == PieceColor.Black)) ? 2 : 1;
             var center = (SQUAREAREALENGTH / 2);
             for (int i = 1; i <= maxDistance; i++)
             {
