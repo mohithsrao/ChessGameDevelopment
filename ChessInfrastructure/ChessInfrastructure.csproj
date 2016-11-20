@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChessEnums.cs" />
+    <Compile Include="Interfaces\IDragable.cs" />
+    <Compile Include="Interfaces\IDropable.cs" />
     <Compile Include="ObservableClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

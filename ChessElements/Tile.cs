@@ -1,10 +1,12 @@
 ﻿using ChessInfrastructure;
+using ChessInfrastructure.Interfaces;
 using System.Windows;
 using static ChessInfrastructure.ChessEnums;
+using System;
 
 namespace ChessElements
 {
-    public class Tile : ObservableClass
+    public class Tile : ObservableClass,IDragable,IDropable
     {
         #region Constructor
 
@@ -85,6 +87,39 @@ namespace ChessElements
         #endregion
 
         #region Public Methods
+
+        #endregion
+
+        #region IDragable
+
+        Type IDragable.DataType
+        {
+            get
+            {
+                return typeof(Tile);
+            }
+        }        
+
+        void IDragable.Remove(object i)
+        {
+        }
+
+
+        #endregion
+
+        #region IDropable
+
+        Type IDropable.DataType
+        {
+            get
+            {
+                return typeof(Tile);
+            }
+        }
+
+        void IDropable.Drop(object data, int index)
+        {
+        }
 
         #endregion
     }

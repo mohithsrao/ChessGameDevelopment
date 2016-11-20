@@ -56,10 +56,10 @@ namespace ChessGame.ViewModels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Tile_MouseDown(object sender, MouseButtonEventArgs e)
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             var tile = (sender as FrameworkElement).DataContext as Tile;
-            if (tile == null) return;
+            if (tile == null || tile.IsEmptyTile) return;
             tile.Piece.GetMoveList(tile);
         }
 

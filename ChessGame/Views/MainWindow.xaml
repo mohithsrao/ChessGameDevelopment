@@ -7,6 +7,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" 
         xmlns:ic="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
         xmlns:conv="clr-namespace:ChessGame.Converters"
+        xmlns:beh="clr-namespace:ChessGame.Behavior"
         mc:Ignorable="d"
         Title="Chess Game"
         DataContext="{StaticResource MainWindowViewModel}">
@@ -155,19 +156,27 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Width="50" 
-                            Height="50" 
-                            BorderBrush="{Binding Background,Converter={StaticResource BackgroundConverter}}"
-                            BorderThickness="3">
-                        <Image Margin="3,3,3,3" 
-                            Style="{StaticResource ChessPieceStyle}" >
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseDown">
-                                    <ic:CallMethodAction MethodName="Tile_MouseDown" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Image>
-                    </Border>
+                    <Button 
+                        Height="50"
+                        Width="50"
+                        AllowDrop="True"
+                        Background="Transparent"
+                        BorderBrush="{Binding Background,Converter={StaticResource BackgroundConverter}}"
+                        BorderThickness="3">
+                        <Button.Content>
+                            <Image Margin="3,3,3,3"
+                            Style="{StaticResource ChessPieceStyle}" />
+                        </Button.Content>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="Click">
+                                <ic:CallMethodAction MethodName="Button_Click" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <i:Interaction.Behaviors>
+                            <beh:FrameworkElementDragBehavior/>
+                            <beh:FrameworkElementDropBehavior/>
+                        </i:Interaction.Behaviors>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
