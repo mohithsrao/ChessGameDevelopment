@@ -1,6 +1,7 @@
 ﻿using ChessElements;
 using ChessInfrastructure;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -56,8 +57,9 @@ namespace ChessGame.ViewModels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Button_Click(object sender, RoutedEventArgs e)
+        public void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            _board.ToList().ForEach(x => x.Background = ChessEnums.TileBackground.Transparent);
             var tile = (sender as FrameworkElement).DataContext as Tile;
             if (tile == null || tile.IsEmptyTile) return;
             tile.Piece.GetMoveList(tile);

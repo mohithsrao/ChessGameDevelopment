@@ -20,7 +20,7 @@
                 <Setter Property="Height" Value="50"/>
             </Style>
             <conv:BackgroundConverter x:Key="BackgroundConverter"/>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -86,7 +86,7 @@
                 <TextBlock Text="1" 
                        TextAlignment="Center"/>
             </ListBoxItem>
-        </ListBox>    
+        </ListBox>
         <StackPanel Orientation="Horizontal"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
@@ -156,27 +156,25 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button 
-                        Height="50"
-                        Width="50"
-                        AllowDrop="True"
-                        Background="Transparent"
-                        BorderBrush="{Binding Background,Converter={StaticResource BackgroundConverter}}"
-                        BorderThickness="3">
-                        <Button.Content>
-                            <Image Margin="3,3,3,3"
+                    <Border VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            Height="50"
+                            Width="50"
+                            Background="Transparent"
+                            BorderBrush="{Binding Background,Converter={StaticResource BackgroundConverter}}"
+                            BorderThickness="3">
+                        <Image
                             Style="{StaticResource ChessPieceStyle}" />
-                        </Button.Content>
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <ic:CallMethodAction MethodName="Button_Click" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext}"/>
+                            <i:EventTrigger EventName="MouseDown">
+                                <ic:CallMethodAction MethodName="Border_MouseDown" TargetObject="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}},Path=DataContext}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <i:Interaction.Behaviors>
                             <beh:FrameworkElementDragBehavior/>
                             <beh:FrameworkElementDropBehavior/>
                         </i:Interaction.Behaviors>
-                    </Button>
+                    </Border>                    
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemContainerStyle>
@@ -184,7 +182,7 @@
                     <Setter Property="Canvas.Left" Value="{Binding Pos.X}" />
                     <Setter Property="Canvas.Top" Value="{Binding Pos.Y}" />
                 </Style>
-            </ItemsControl.ItemContainerStyle>            
+            </ItemsControl.ItemContainerStyle>
         </ItemsControl>
     </Grid>
 </Window>

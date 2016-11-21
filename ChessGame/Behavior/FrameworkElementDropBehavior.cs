@@ -30,11 +30,14 @@ namespace ChessGame.Behavior
                 {
                     //drop the data
                     IDropable target = AssociatedObject.DataContext as IDropable;
-                    target.Drop(e.Data.GetData(dataType));
+                    if (target.CanDrop)
+                    {
+                        target.Drop(e.Data.GetData(dataType));
 
-                    //remove the data from the source
-                    IDragable source = e.Data.GetData(dataType) as IDragable;
-                    source.Remove(e.Data.GetData(dataType));
+                        //remove the data from the source
+                        IDragable source = e.Data.GetData(dataType) as IDragable;
+                        source.Remove(e.Data.GetData(dataType));
+                    }
                 }
             }
             if (adorner != null)
@@ -53,16 +56,23 @@ namespace ChessGame.Behavior
 
         void AssociatedObject_PreviewDragOver(object sender, DragEventArgs e)
         {
-            if (dataType != null)
+            IDropable dropObject = this.AssociatedObject.DataContext as IDropable;
+            if (dropObject != null)
             {
-                //if item can be dropped
-                if (e.Data.GetDataPresent(dataType))
+                if (dropObject.CanDrop)
                 {
-                    //give mouse effect
-                    SetDragDropEffects(e);
-                    //draw the dots
-                    if (adorner != null)
-                        adorner.Update();
+                    if (dataType != null)
+                    {
+                        //if item can be dropped
+                        if (e.Data.GetDataPresent(dataType))
+                        {
+                            //give mouse effect
+                            SetDragDropEffects(e);
+                            //draw the dots
+                            if (adorner != null)
+                                adorner.Update();
+                        }
+                    }
                 }
             }
             e.Handled = true;
@@ -78,7 +88,10 @@ namespace ChessGame.Behavior
                     IDropable dropObject = this.AssociatedObject.DataContext as IDropable;
                     if (dropObject != null)
                     {
-                        this.dataType = dropObject.DataType;
+                        if (dropObject.CanDrop)
+                        {
+                            dataType = dropObject.DataType;
+                        }
                     }
                 }
             }

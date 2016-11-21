@@ -102,6 +102,7 @@ namespace ChessElements
 
         void IDragable.Remove(object i)
         {
+            Piece = null;
         }
 
 
@@ -117,8 +118,21 @@ namespace ChessElements
             }
         }
 
+        bool IDropable.CanDrop
+        {
+            get
+            {
+                return Background == TileBackground.Green || Background == TileBackground.Red;
+            }
+        }
+
         void IDropable.Drop(object data, int index)
         {
+            var dropedPiece = (data as Tile);
+            if (dropedPiece != null)
+            {
+                Piece = dropedPiece.Piece;
+            }            
         }
 
         #endregion

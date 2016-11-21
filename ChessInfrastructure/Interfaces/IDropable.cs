@@ -10,6 +10,11 @@ namespace ChessInfrastructure.Interfaces
         Type DataType { get; }
 
         /// <summary>
+        /// Determins if the item can be droped
+        /// </summary>
+        bool CanDrop { get; }
+
+        /// <summary>
         /// Drop data into the collection.
         /// </summary>
         /// <param name="data">The data to be dropped</param>
