@@ -88,5 +88,13 @@ namespace ChessElements.Tests
             Assert.IsNotNull(listH8);
             Assert.IsTrue(listH8.Cast<Tile>().Where(x => x != null).Count() == 9);//Only 9 tiles must be inside the board
         }
+
+        [TestMethod()]
+        public void ClearHighLight_Test()
+        {
+            ChessBoard.Instance.Clearhighlights();
+
+            Assert.IsTrue(ChessBoard.Instance.Board.All(x => x.Background == TileBackground.Transparent));
+        }
     }
 }

@@ -2,9 +2,7 @@
 using ChessInfrastructure;
 using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace ChessGame.ViewModels
@@ -58,7 +56,7 @@ namespace ChessGame.ViewModels
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        public void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
             {

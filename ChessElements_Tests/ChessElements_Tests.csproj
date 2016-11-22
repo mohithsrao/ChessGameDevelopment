@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="TileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChessElements\ChessElements.csproj">

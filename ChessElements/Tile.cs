@@ -144,13 +144,18 @@ namespace ChessElements
         /// </summary>
         /// <param name="data"></param>
         /// <param name="index"></param>
-        void IDropable.Drop(object data, int index)
+        void IDropable.Drop(object data)
         {
+            if (data == null) return;
             //TODO: Check if Pawn Piece is in the Other end of the board and initiate Promotion of Piece
+
+            //TODO: Add Logic to Update the Capture of Piece if The piece color is of enemy
+
             var dropedPiece = (data as Tile);
             if (dropedPiece != null)
             {
                 Piece = dropedPiece.Piece;
+                ChessBoard.Instance.Clearhighlights();
             }            
         }
 
