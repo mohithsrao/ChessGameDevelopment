@@ -92,6 +92,9 @@ namespace ChessElements
 
         #region IDragable
 
+        /// <summary>
+        /// Data Type to save the draged object
+        /// </summary>
         Type IDragable.DataType
         {
             get
@@ -100,6 +103,10 @@ namespace ChessElements
             }
         }        
 
+        /// <summary>
+        /// Method called to remove the draged item
+        /// </summary>
+        /// <param name="i"></param>
         void IDragable.Remove(object i)
         {
             Piece = null;
@@ -110,6 +117,9 @@ namespace ChessElements
 
         #region IDropable
 
+        /// <summary>
+        /// Data Type to retreve the droped object
+        /// </summary>
         Type IDropable.DataType
         {
             get
@@ -118,6 +128,9 @@ namespace ChessElements
             }
         }
 
+        /// <summary>
+        /// Lets the Drop Behaviour know if the image can be droped
+        /// </summary>
         bool IDropable.CanDrop
         {
             get
@@ -126,6 +139,11 @@ namespace ChessElements
             }
         }
 
+        /// <summary>
+        /// Drop event called when the Icon is droped on this tile
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="index"></param>
         void IDropable.Drop(object data, int index)
         {
             var dropedPiece = (data as Tile);

@@ -171,6 +171,14 @@ namespace ChessElements
             return tileSquare;
         }
 
+        /// <summary>
+        /// Method to clear the Highlights on the board
+        /// </summary>
+        public void Clearhighlights()
+        {
+            Board.ToList().ForEach(x => x.Background = TileBackground.Transparent);
+        }
+
         #endregion
     }
 }

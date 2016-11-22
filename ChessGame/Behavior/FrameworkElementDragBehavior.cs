@@ -9,6 +9,9 @@ namespace ChessGame.Behavior
     {
         private bool isMouseClicked = false;
 
+        /// <summary>
+        /// Initial method to attach events to the Framework Elements
+        /// </summary>
         protected override void OnAttached()
         {
             base.OnAttached();
@@ -17,16 +20,31 @@ namespace ChessGame.Behavior
             AssociatedObject.MouseLeave += new MouseEventHandler(AssociatedObject_MouseLeave);
         }
 
+        /// <summary>
+        /// Mouse Down to set the Mouse Clicked Flag
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
             isMouseClicked = true;
         }
 
+        /// <summary>
+        /// Mouse up button to unset the mouse clicked flag
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_MouseUp(object sender, MouseButtonEventArgs e)
         {
             isMouseClicked = false;
         }
 
+        /// <summary>
+        /// Do the Drag operation when the mouse leaves the Framework Element
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_MouseLeave(object sender, MouseEventArgs e)
         {
             if (isMouseClicked)

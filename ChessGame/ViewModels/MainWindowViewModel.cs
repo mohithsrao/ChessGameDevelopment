@@ -59,7 +59,7 @@ namespace ChessGame.ViewModels
         /// <param name="e"></param>
         public void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            _board.ToList().ForEach(x => x.Background = ChessEnums.TileBackground.Transparent);
+            ChessBoard.Instance.Clearhighlights();
             var tile = (sender as FrameworkElement).DataContext as Tile;
             if (tile == null || tile.IsEmptyTile) return;
             tile.Piece.GetMoveList(tile);

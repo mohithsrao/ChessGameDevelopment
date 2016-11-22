@@ -10,6 +10,9 @@ namespace ChessGame.Behavior
         private Type dataType; //the type of the data that can be dropped into this control
         private FrameworkElementAdorner adorner;
 
+        /// <summary>
+        /// Initial method to attach the events for the Framework Element
+        /// </summary>
         protected override void OnAttached()
         {
             base.OnAttached();
@@ -21,6 +24,11 @@ namespace ChessGame.Behavior
             AssociatedObject.Drop += new DragEventHandler(AssociatedObject_Drop);
         }
 
+        /// <summary>
+        /// Drop event to call the respective classes to handle
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_Drop(object sender, DragEventArgs e)
         {
             if (dataType != null)
@@ -47,6 +55,11 @@ namespace ChessGame.Behavior
             return;
         }
 
+        /// <summary>
+        /// Removes the animation when cursor leaves the Dropable area
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_DragLeave(object sender, DragEventArgs e)
         {
             if (adorner != null)
@@ -54,6 +67,11 @@ namespace ChessGame.Behavior
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Updates the ardoner after Drag
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_PreviewDragOver(object sender, DragEventArgs e)
         {
             IDropable dropObject = this.AssociatedObject.DataContext as IDropable;
@@ -78,6 +96,11 @@ namespace ChessGame.Behavior
             e.Handled = true;
         }
 
+        /// <summary>
+        /// Initilizes the adorner when the curser enters the dropable object
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void AssociatedObject_DragEnter(object sender, DragEventArgs e)
         {
             //if the DataContext implements IDropable, record the data type that can be dropped
