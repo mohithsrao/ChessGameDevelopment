@@ -1,5 +1,6 @@
 ﻿using ChessElements;
 using ChessInfrastructure;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -59,10 +60,18 @@ namespace ChessGame.ViewModels
         /// <param name="e"></param>
         public void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            ChessBoard.Instance.Clearhighlights();
-            var tile = (sender as FrameworkElement).DataContext as Tile;
-            if (tile == null || tile.IsEmptyTile) return;
-            tile.Piece.GetMoveList(tile);
+            try
+            {
+                ChessBoard.Instance.Clearhighlights();
+                var tile = (sender as FrameworkElement).DataContext as Tile;
+                if (tile == null || tile.IsEmptyTile) return;
+                tile.Piece.GetMoveList(tile);
+            }
+            catch (Exception)
+            {
+                //TODO: Write Exception Handeling to let user know Some crach has happened
+                throw;
+            }
         }
 
         #endregion

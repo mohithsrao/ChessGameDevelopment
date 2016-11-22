@@ -21,18 +21,10 @@ namespace ChessElements
             set { _color = value; RaisePropertyChanged("Color"); }
         }
 
-        public virtual void Move(Tile fromTile, Tile toTile)
-        {
-
-        }
-
         /// <summary>
         /// Virtual method that get all possible moves of the piece on the tile
         /// </summary>
         /// <param name="tile"></param>
-        public virtual List<Tile> GetMoveList(Tile tile)
-        {
-            return null;
-        }
+        public abstract List<Tile> GetMoveList(Tile tile);
     }
 }

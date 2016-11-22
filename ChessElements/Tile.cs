@@ -146,6 +146,7 @@ namespace ChessElements
         /// <param name="index"></param>
         void IDropable.Drop(object data, int index)
         {
+            //TODO: Check if Pawn Piece is in the Other end of the board and initiate Promotion of Piece
             var dropedPiece = (data as Tile);
             if (dropedPiece != null)
             {
