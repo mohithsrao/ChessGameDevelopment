@@ -18,8 +18,43 @@ namespace ChessGame.Behavior
             AssociatedObject.PreviewMouseDown += new MouseButtonEventHandler(AssociatedObject_PreviewMouseDown);
             AssociatedObject.MouseUp += new MouseButtonEventHandler(AssociatedObject_MouseUp);
             AssociatedObject.MouseLeave += new MouseEventHandler(AssociatedObject_MouseLeave);
+            AssociatedObject.GiveFeedback += new GiveFeedbackEventHandler(AssociatedObject_GiveFeedback);
         }
 
+        /// <summary>
+        /// Event to Handle Feedback to change the Mouse cursor based on the Effects
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void AssociatedObject_GiveFeedback(object sender, GiveFeedbackEventArgs e)
+        {
+            IDragable dragObject = AssociatedObject.DataContext as IDragable;
+            if (dragObject != null)
+            {
+                if (!dragObject.CanDrag) return;
+                e.UseDefaultCursors = true;
+                switch (e.Effects)
+                {
+                    case DragDropEffects.None:
+                        break;
+                    case DragDropEffects.Copy:
+                        break;
+                    case DragDropEffects.Move:
+                        break;
+                    case DragDropEffects.Link:
+                        break;
+                    case DragDropEffects.Scroll:
+                        break;
+                    case DragDropEffects.All:
+                        break;
+                    default:
+                        e.UseDefaultCursors = true;
+                        break;
+                }
+                e.Handled = true;
+            }
+        }
+        
         /// <summary>
         /// Mouse Down to set the Mouse Clicked Flag
         /// </summary>
