@@ -101,7 +101,18 @@ namespace ChessElements
             {
                 return typeof(Tile);
             }
-        }        
+        }
+
+        /// <summary>
+        /// Bool to determine if the element can be draged
+        /// </summary>
+        bool IDragable.CanDrag
+        {
+            get
+            {
+                return !IsEmptyTile;
+            }
+        }
 
         /// <summary>
         /// Method called to remove the draged item
@@ -137,7 +148,7 @@ namespace ChessElements
             {
                 return Background == TileBackground.Green || Background == TileBackground.Red;
             }
-        }
+        }       
 
         /// <summary>
         /// Drop event called when the Icon is droped on this tile

@@ -10,6 +10,11 @@ namespace ChessInfrastructure.Interfaces
         Type DataType { get; }
 
         /// <summary>
+        /// Bool to determine if the element can be draged
+        /// </summary>
+        bool CanDrag { get; }
+
+        /// <summary>
         /// Remove the object from the collection
         /// </summary>
         void Remove(object i);

@@ -53,6 +53,7 @@ namespace ChessGame.Behavior
                 IDragable dragObject = AssociatedObject.DataContext as IDragable;
                 if (dragObject != null)
                 {
+                    if (!dragObject.CanDrag) return;
                     DataObject data = new DataObject();
                     data.SetData(dragObject.DataType, AssociatedObject.DataContext);
                     DragDrop.DoDragDrop(AssociatedObject, data, DragDropEffects.Move);
