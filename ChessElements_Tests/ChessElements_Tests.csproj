@@ -52,6 +52,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ChessBoardTests.cs" />
+    <Compile Include="Pieces\PawnTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>

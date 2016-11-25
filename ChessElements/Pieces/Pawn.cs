@@ -49,20 +49,21 @@ namespace ChessElements.Pieces
                         nextTile.Background = TileBackground.Green;
                         moveList.Add(nextTile);
                     }
-                    if (maxDistance == 1)//If Pawn not in Starting position Get the Diagonal Tiles
+                    else
                     {
-                        var diaOne = GetDiagonalTileMove(list, tile, maxDistance, true);//Right Diagonal Tile
-                        if(diaOne != null)
-                        {
-                            moveList.Add(diaOne);
-                        }
-                        var diaTwo = GetDiagonalTileMove(list, tile, maxDistance, false);//Left Diagonal Tile
-                        if (diaTwo != null)
-                        {
-                            moveList.Add(diaTwo);
-                        }
-                    }
+                        break;//Exit from the loop as Pawn's cannot jump
+                    }                    
                 }
+            }
+            var diaOne = GetDiagonalTileMove(list, tile, true);//Right Diagonal Tile
+            if (diaOne != null)
+            {
+                moveList.Add(diaOne);
+            }
+            var diaTwo = GetDiagonalTileMove(list, tile, false);//Left Diagonal Tile
+            if (diaTwo != null)
+            {
+                moveList.Add(diaTwo);
             }
             return moveList;
         }
@@ -75,10 +76,10 @@ namespace ChessElements.Pieces
         /// <param name="distance"></param>
         /// <param name="rightDiagonal"></param>
         /// <returns></returns>
-        private Tile GetDiagonalTileMove(Tile[,] list, Tile tile,int distance,bool rightDiagonal)
+        private Tile GetDiagonalTileMove(Tile[,] list, Tile tile,bool rightDiagonal)
         {
-            var i = (tile.Piece.Color == PieceColor.White) ? CENTER - distance : CENTER + distance;
-            var j = rightDiagonal ? CENTER - distance : CENTER + distance;
+            var i = (tile.Piece.Color == PieceColor.White) ? CENTER - 1 : CENTER + 1;
+            var j = rightDiagonal ? CENTER - 1 : CENTER + 1;
             var diagTile = list[i, j];
             if (diagTile != null)
             {
@@ -102,9 +103,16 @@ namespace ChessElements.Pieces
         /// <returns></returns>
         public override List<Tile> GetMoveList(Tile tile)
         {
-            var listArea = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
-            var list = GetList(listArea, tile);
-            return list;
+            if (!tile.IsEmptyTile)
+            {
+                var listArea = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
+                if (listArea != null && listArea.Length > 0)
+                {
+                    var list = GetList(listArea, tile);
+                    return list;
+                }
+            }
+            return null;
         }
 
         #endregion
