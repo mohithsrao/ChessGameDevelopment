@@ -1,10 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ChessElements.Pieces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChessElements.Pieces.Tests
 {
@@ -12,7 +7,7 @@ namespace ChessElements.Pieces.Tests
     public class PawnTests
     {
         [TestMethod()]
-        public void GetMoveList_Test()
+        public void Pawn_GetMoveList_Test()
         {
             //Test for empty piece
             var piece = new Pawn(ChessInfrastructure.ChessEnums.PieceColor.Black);
