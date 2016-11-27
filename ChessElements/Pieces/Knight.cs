@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessElements.Extensions;
+using System;
 using System.Collections.Generic;
 using static ChessInfrastructure.ChessEnums;
 
@@ -36,7 +37,7 @@ namespace ChessElements.Pieces
             {
                 if (nxtTile != null)
                 {
-                    var dist = GetDistance(nxtTile, tile);
+                    var dist = nxtTile.GetDistance(tile);
                     if (dist == KNIGHTMOVEDISTANCE)
                     {
                         if (nxtTile.IsEmptyTile)
@@ -59,18 +60,7 @@ namespace ChessElements.Pieces
         #endregion
 
         #region Private Methods
-
-        /// <summary>
-        /// Method to get the distance between two tiles
-        /// </summary>
-        /// <param name="fromTile"></param>
-        /// <param name="toTile"></param>
-        /// <returns></returns>
-        private double GetDistance(Tile fromTile, Tile toTile)
-        {
-            return Math.Sqrt(Math.Pow(((int)fromTile.Row - (int)toTile.Row),2) + Math.Pow(((int)fromTile.Column - (int)toTile.Column), 2));
-        }
-
+        
         #endregion
     }
 }
