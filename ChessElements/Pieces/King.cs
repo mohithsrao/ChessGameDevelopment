@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChessElements.Extensions;
+using System;
 using System.Collections.Generic;
 using static ChessInfrastructure.ChessEnums;
 
@@ -16,9 +17,50 @@ namespace ChessElements.Pieces
 
         #region Publicj Methods
 
+        /// <summary>
+        /// Get move list for King
+        /// </summary>
+        /// <param name="tile"></param>
+        /// <returns></returns>
         public override List<Tile> GetMoveList(Tile tile)
         {
-            throw new NotImplementedException();
+            var list = new List<Tile>();
+            var i = 1;
+            //Diagonal Moves
+            var ppdrow = (int)tile.Row + i;
+            var ppdcolumn = (int)tile.Column + i;
+            tile.GetNextMove(list, ppdrow, ppdcolumn);
+
+            var npdrow = (int)tile.Row - i;
+            var npdcolumn = (int)tile.Column + i;
+            tile.GetNextMove(list, npdrow, npdcolumn);
+
+            var pndrow = (int)tile.Row + i;
+            var pndcolumn = (int)tile.Column - i;
+            tile.GetNextMove(list, pndrow, pndcolumn);
+
+            var nndrow = (int)tile.Row - i;
+            var nndcolumn = (int)tile.Column - i;
+            tile.GetNextMove(list, nndrow, nndcolumn);
+
+            //Right Angled moves
+            var pphrow = (int)tile.Row;
+            var pphcolumn = (int)tile.Column + i;
+            tile.GetNextMove(list, pphrow, pphcolumn);
+
+            var pnhrow = (int)tile.Row;
+            var pnhcolumn = (int)tile.Column - i;
+            tile.GetNextMove(list, pnhrow, pnhcolumn);
+
+            var nphrow = (int)tile.Row + i;
+            var nphcolumn = (int)tile.Column;
+            tile.GetNextMove(list, nphrow, nphcolumn);
+
+            var nnhrow = (int)tile.Row - i;
+            var nnhcolumn = (int)tile.Column;
+            tile.GetNextMove(list, nnhrow, nnhcolumn);
+
+            return list;
         }
 
         #endregion
