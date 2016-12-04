@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using ChessElements.Extensions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
 namespace ChessElements.Pieces.Tests
@@ -20,6 +21,7 @@ namespace ChessElements.Pieces.Tests
             var A1tile = new Tile(ChessInfrastructure.ChessEnums.Rows.One, ChessInfrastructure.ChessEnums.Columns.A, A1piece);
 
             var A1List = A1piece.GetMoveList(A1tile);
+            A1List.AssignBackground();
 
             Assert.IsNotNull(A1List);
             Assert.IsTrue(A1List.Count == 2);
@@ -31,6 +33,7 @@ namespace ChessElements.Pieces.Tests
             var A8tile = new Tile(ChessInfrastructure.ChessEnums.Rows.Eight, ChessInfrastructure.ChessEnums.Columns.A, A8piece);
 
             var A8List = A1piece.GetMoveList(A8tile);
+            A8List.AssignBackground();
 
             Assert.IsNotNull(A8List);
             Assert.IsTrue(A8List.Count == 1);
@@ -41,6 +44,7 @@ namespace ChessElements.Pieces.Tests
             var H1tile = new Tile(ChessInfrastructure.ChessEnums.Rows.One, ChessInfrastructure.ChessEnums.Columns.H, H1piece);
 
             var H1List = A1piece.GetMoveList(H1tile);
+            H1List.AssignBackground();
 
             Assert.IsNotNull(H1List);
             Assert.IsTrue(H1List.Count == 2);
@@ -53,6 +57,7 @@ namespace ChessElements.Pieces.Tests
             var H8tile = new Tile(ChessInfrastructure.ChessEnums.Rows.Eight, ChessInfrastructure.ChessEnums.Columns.H, H8piece);
 
             var H8List = A1piece.GetMoveList(H8tile);
+            H8List.AssignBackground();
 
             Assert.IsNotNull(H8List);
             Assert.IsTrue(H8List.Count == 1);

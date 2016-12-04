@@ -42,13 +42,11 @@ namespace ChessElements.Pieces
                     {
                         if (nxtTile.IsEmptyTile)
                         {
-                            nxtTile.Background = TileBackground.Green;
                             list.Add(nxtTile);
                             continue;
                         }
                         else if (nxtTile.Piece.Color != tile.Piece.Color)
                         {
-                            nxtTile.Background = TileBackground.Red;
                             list.Add(nxtTile);
                         }
                     }

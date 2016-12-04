@@ -46,7 +46,6 @@ namespace ChessElements.Pieces
                 {
                     if (nextTile.IsEmptyTile)//Possible Move on an Empty tile
                     {
-                        nextTile.Background = TileBackground.Green;
                         moveList.Add(nextTile);
                     }
                     else
@@ -85,7 +84,6 @@ namespace ChessElements.Pieces
             {
                 if (!diagTile.IsEmptyTile && diagTile.Piece.Color != tile.Piece.Color)
                 {
-                    diagTile.Background = TileBackground.Red;
                     return diagTile;
                 }
             }

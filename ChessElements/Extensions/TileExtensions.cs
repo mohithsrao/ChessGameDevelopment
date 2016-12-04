@@ -33,13 +33,11 @@ namespace ChessElements.Extensions
                 var nxtTile = ChessBoard.Instance.Board.FirstOrDefault(x => (int)x.Row == row && (int)x.Column == column);
                 if (nxtTile.IsEmptyTile)
                 {
-                    nxtTile.Background = TileBackground.Green;
                     list.Add(nxtTile);
                     return true;
                 }
                 else if (nxtTile.Piece.Color != tile.Piece.Color)
                 {
-                    nxtTile.Background = TileBackground.Red;
                     list.Add(nxtTile);
                 }
             }
