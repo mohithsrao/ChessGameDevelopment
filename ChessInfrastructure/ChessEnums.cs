@@ -63,5 +63,14 @@
             Green,
             Red
         }
+
+        /// <summary>
+        /// Enum Used to Denote the Type of Move
+        /// </summary>
+        public enum MoveType
+        {
+            Attack,
+            Normal
+        }
     }
 }

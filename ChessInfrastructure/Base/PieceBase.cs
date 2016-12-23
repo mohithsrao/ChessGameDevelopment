@@ -1,11 +1,10 @@
-﻿using System;
-using ChessInfrastructure;
-using static ChessInfrastructure.ChessEnums;
+﻿using static ChessInfrastructure.ChessEnums;
 using System.Collections.Generic;
+using ChessInfrastructure.Interfaces;
 
-namespace ChessElements
+namespace ChessInfrastructure.Base
 {
-    public abstract class PieceBase : ObservableClass
+    public abstract class PieceBase : ObservableClass,IMovable
     {
         private PieceType _type;
         public PieceType Type
@@ -21,10 +20,6 @@ namespace ChessElements
             set { _color = value; RaisePropertyChanged("Color"); }
         }
 
-        /// <summary>
-        /// Virtual method that get all possible moves of the piece on the tile
-        /// </summary>
-        /// <param name="tile"></param>
-        public abstract List<Tile> GetMoveList(Tile tile);
+        public abstract List<MoveBase> GetMoveList(IDropable tile);
     }
 }

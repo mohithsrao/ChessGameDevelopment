@@ -1,5 +1,7 @@
 ﻿using ChessElements.Extensions;
-using System;
+using ChessElements.Moves;
+using ChessInfrastructure.Base;
+using ChessInfrastructure.Interfaces;
 using System.Collections.Generic;
 using static ChessInfrastructure.ChessEnums;
 
@@ -26,11 +28,13 @@ namespace ChessElements.Pieces
         /// </summary>
         /// <param name="tile"></param>
         /// <returns></returns>
-        public override List<Tile> GetMoveList(Tile tile)
+        public override List<MoveBase> GetMoveList(IDropable droppedTile)
         {
+            var tile = droppedTile as Tile;
+            if (tile == null) return null;
             if (tile.IsEmptyTile) return null;
 
-            var list = new List<Tile>();            
+            var list = new List<MoveBase>();            
             var surroundingList = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);
 
             foreach (var nxtTile in surroundingList)
@@ -42,12 +46,12 @@ namespace ChessElements.Pieces
                     {
                         if (nxtTile.IsEmptyTile)
                         {
-                            list.Add(nxtTile);
+                            list.Add(new NormalMove(nxtTile.Row,nxtTile.Column));
                             continue;
                         }
                         else if (nxtTile.Piece.Color != tile.Piece.Color)
                         {
-                            list.Add(nxtTile);
+                            list.Add(new AttackMove(nxtTile.Row, nxtTile.Column, nxtTile.Piece));
                         }
                     }
                 }

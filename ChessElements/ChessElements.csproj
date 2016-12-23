@@ -44,11 +44,12 @@
     <Compile Include="ChessBoard.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Extensions\TileExtensions.cs" />
+    <Compile Include="Moves\AttackMove.cs" />
+    <Compile Include="Moves\NormalMove.cs" />
     <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\King.cs" />
     <Compile Include="Pieces\Knight.cs" />
     <Compile Include="Pieces\Pawn.cs" />
-    <Compile Include="Pieces\PieceBase.cs" />
     <Compile Include="Pieces\Queen.cs" />
     <Compile Include="Pieces\Rook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
 ﻿using ChessElements.Extensions;
+using ChessInfrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 
@@ -28,7 +29,7 @@ namespace ChessElements.Pieces.Tests
             var tilesev8 = new Tile(ChessInfrastructure.ChessEnums.Rows.Seven, ChessInfrastructure.ChessEnums.Columns.A,piece);
 
             var listsev8 = piece.GetMoveList(tilesev8);
-            listsev8.AssignBackground();
+            //listsev8.AssignBackground();
             Assert.IsTrue(listsev8.Count == 2);
 
             //Test for Seven G White with piece in front 3 moves
@@ -37,10 +38,10 @@ namespace ChessElements.Pieces.Tests
             pieceInFrontWite.Piece = new Pawn(ChessInfrastructure.ChessEnums.PieceColor.White);
 
             var listsevG = piece.GetMoveList(tilesevG);
-            listsevG.AssignBackground();
+            //listsevG.AssignBackground();
             Assert.IsTrue(listsevG.Count == 3);
-            Assert.IsTrue(listsevG.Where(x => x.Background == ChessInfrastructure.ChessEnums.TileBackground.Red).Count() == 1);
-            Assert.IsTrue(listsevG.Where(x => x.Background == ChessInfrastructure.ChessEnums.TileBackground.Green).Count() == 2);
+            Assert.IsTrue(listsevG.Where(x => x.Type == ChessEnums.MoveType.Attack).Count() == 1);
+            Assert.IsTrue(listsevG.Where(x => x.Type == ChessEnums.MoveType.Normal).Count() == 2);
 
             //Test for Seven H with piece in front 0 moves
             var tilesevH = new Tile(ChessInfrastructure.ChessEnums.Rows.Seven, ChessInfrastructure.ChessEnums.Columns.H, piece);

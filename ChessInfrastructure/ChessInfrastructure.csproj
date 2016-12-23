@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\MoveBase.cs" />
+    <Compile Include="Base\PieceBase.cs" />
     <Compile Include="ChessEnums.cs" />
     <Compile Include="Interfaces\IDragable.cs" />
     <Compile Include="Interfaces\IDropable.cs" />
+    <Compile Include="Interfaces\IMovable.cs" />
     <Compile Include="ObservableClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

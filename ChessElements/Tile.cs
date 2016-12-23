@@ -3,6 +3,7 @@ using ChessInfrastructure.Interfaces;
 using System.Windows;
 using static ChessInfrastructure.ChessEnums;
 using System;
+using ChessInfrastructure.Base;
 
 namespace ChessElements
 {

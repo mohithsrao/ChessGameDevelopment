@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using ChessElements.Moves;
+using ChessInfrastructure.Base;
+using ChessInfrastructure.Interfaces;
+using System.Collections.Generic;
 using static ChessInfrastructure.ChessEnums;
 
 namespace ChessElements.Pieces
@@ -35,9 +38,9 @@ namespace ChessElements.Pieces
         /// <param name="list"></param>
         /// <param name="tile"></param>
         /// <returns></returns>
-        private List<Tile> GetList(Tile[,] list,Tile tile)
+        private List<MoveBase> GetList(Tile[,] list,Tile tile)
         {
-            var moveList = new List<Tile>();
+            var moveList = new List<MoveBase>();
             int maxDistance = ((tile.Row == Rows.Two && tile.Piece.Color == PieceColor.White)|| (tile.Row == Rows.Seven && tile.Piece.Color == PieceColor.Black)) ? 2 : 1;//Determins the distane the piece can travel based on the start position
             for (int i = 1; i <= maxDistance; i++)//Iterates of the number of steps the Pawn can take
             {
@@ -46,7 +49,7 @@ namespace ChessElements.Pieces
                 {
                     if (nextTile.IsEmptyTile)//Possible Move on an Empty tile
                     {
-                        moveList.Add(nextTile);
+                        moveList.Add(new NormalMove(nextTile.Row,nextTile.Column));
                     }
                     else
                     {
@@ -57,12 +60,12 @@ namespace ChessElements.Pieces
             var diaOne = GetDiagonalTileMove(list, tile, true);//Right Diagonal Tile
             if (diaOne != null)
             {
-                moveList.Add(diaOne);
+                moveList.Add(new AttackMove(diaOne.Row, diaOne.Column, diaOne.Piece));
             }
             var diaTwo = GetDiagonalTileMove(list, tile, false);//Left Diagonal Tile
             if (diaTwo != null)
             {
-                moveList.Add(diaTwo);
+                moveList.Add(new AttackMove(diaTwo.Row, diaTwo.Column, diaTwo.Piece));
             }
             return moveList;
         }
@@ -99,8 +102,10 @@ namespace ChessElements.Pieces
         /// </summary>
         /// <param name="tile"></param>
         /// <returns></returns>
-        public override List<Tile> GetMoveList(Tile tile)
+        public override List<MoveBase> GetMoveList(IDropable droppedTile)
         {
+            var tile = droppedTile as Tile;
+            if (tile == null) return null;
             if (!tile.IsEmptyTile)
             {
                 var listArea = ChessBoard.Instance.GetSurroundingTiles(tile, SQUAREAREALENGTH);

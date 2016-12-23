@@ -5,7 +5,6 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using static ChessInfrastructure.ChessEnums;
 
 namespace ChessGame.ViewModels
 {
@@ -65,7 +64,8 @@ namespace ChessGame.ViewModels
                 ChessBoard.Instance.Clearhighlights();
                 var tile = (sender as FrameworkElement).DataContext as Tile;
                 if (tile == null || tile.IsEmptyTile) return;
-                tile.Piece.GetMoveList(tile).AssignBackground();
+                var moveList = tile.Piece.GetMoveList(tile);
+                moveList.AssignBackground();
             }
             catch (Exception)
             {

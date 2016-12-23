@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ChessElements.Moves;
+using ChessInfrastructure.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using static ChessInfrastructure.ChessEnums;
@@ -26,19 +28,19 @@ namespace ChessElements.Extensions
         /// <param name="row"></param>
         /// <param name="column"></param>
         /// <returns></returns>
-        public static bool GetNextMove(this Tile tile, List<Tile> list, int row, int column)
+        public static bool GetNextMove(this Tile tile,ref List<MoveBase> list, int row, int column)
         {
             if ((row >= (int)Rows.Eight && row <= (int)Rows.One) && (column >= (int)Columns.A && column <= (int)Columns.H))
             {
                 var nxtTile = ChessBoard.Instance.Board.FirstOrDefault(x => (int)x.Row == row && (int)x.Column == column);
                 if (nxtTile.IsEmptyTile)
                 {
-                    list.Add(nxtTile);
+                    list.Add(new NormalMove(nxtTile.Row,nxtTile.Column));
                     return true;
                 }
                 else if (nxtTile.Piece.Color != tile.Piece.Color)
                 {
-                    list.Add(nxtTile);
+                    list.Add(new AttackMove(nxtTile.Row, nxtTile.Column, nxtTile.Piece));
                 }
             }
             return false;

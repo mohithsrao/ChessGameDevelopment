@@ -1,5 +1,6 @@
 ﻿using ChessElements.Extensions;
-using System;
+using ChessInfrastructure.Base;
+using ChessInfrastructure.Interfaces;
 using System.Collections.Generic;
 using static ChessInfrastructure.ChessEnums;
 
@@ -22,9 +23,11 @@ namespace ChessElements.Pieces
         /// </summary>
         /// <param name="tile"></param>
         /// <returns></returns>
-        public override List<Tile> GetMoveList(Tile tile)
+        public override List<MoveBase> GetMoveList(IDropable droppedTile)
         {
-            var list = new List<Tile>();
+            var tile = droppedTile as Tile;
+            if (tile == null) return null;
+            var list = new List<MoveBase>();
             bool ppdCanMove = true, 
                 npdCanMove = true, 
                 pndCanMove = true, 
@@ -40,50 +43,50 @@ namespace ChessElements.Pieces
                 {
                     var row = (int)tile.Row + i;
                     var column = (int)tile.Column + i;
-                    ppdCanMove = tile.GetNextMove(list, row, column);
+                    ppdCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 if (npdCanMove)
                 {
                     var row = (int)tile.Row - i;
                     var column = (int)tile.Column + i;
-                    npdCanMove = tile.GetNextMove(list, row, column);
+                    npdCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 if (pndCanMove)
                 {
                     var row = (int)tile.Row + i;
                     var column = (int)tile.Column - i;
-                    pndCanMove = tile.GetNextMove(list, row, column);
+                    pndCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 if (nndCanMove)
                 {
                     var row = (int)tile.Row - i;
                     var column = (int)tile.Column - i;
-                    nndCanMove = tile.GetNextMove(list, row, column);
+                    nndCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 //Right Angled moves
                 if (pphCanMove)
                 {
                     var row = (int)tile.Row;
                     var column = (int)tile.Column + i;
-                    pphCanMove = tile.GetNextMove(list, row, column);
+                    pphCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 if (pnhCanMove)
                 {
                     var row = (int)tile.Row;
                     var column = (int)tile.Column - i;
-                    pnhCanMove = tile.GetNextMove(list, row, column);
+                    pnhCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 if (nphCanMove)
                 {
                     var row = (int)tile.Row + i;
                     var column = (int)tile.Column;
-                    nphCanMove = tile.GetNextMove(list, row, column);
+                    nphCanMove = tile.GetNextMove(ref list, row, column);
                 }
                 if (nnhCanMove)
                 {
                     var row = (int)tile.Row - i;
                     var column = (int)tile.Column;
-                    nnhCanMove = tile.GetNextMove(list, row, column);
+                    nnhCanMove = tile.GetNextMove(ref list, row, column);
                 }
             }
 
