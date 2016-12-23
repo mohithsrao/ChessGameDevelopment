@@ -4,12 +4,12 @@
     {
         public MoveBase(ChessEnums.Rows _row, ChessEnums.Columns _column)
         {
-            row = _row;
-            column = _column;
+            Row = _row;
+            Column = _column;
         }
 
-        public ChessEnums.Columns column { get; private set; }
-        public ChessEnums.Rows row { get;  }
+        public ChessEnums.Columns Column { get; private set; }
+        public ChessEnums.Rows Row { get;  }
         public ChessEnums.MoveType Type { get; set; }
 }
 }

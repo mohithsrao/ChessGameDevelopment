@@ -65,7 +65,7 @@ namespace ChessGame.ViewModels
                 var tile = (sender as FrameworkElement).DataContext as Tile;
                 if (tile == null || tile.IsEmptyTile) return;
                 var moveList = tile.Piece.GetMoveList(tile);
-                moveList.AssignBackground();
+                moveList.AssignBackground(tile);
             }
             catch (Exception)
             {

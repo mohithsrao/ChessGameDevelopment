@@ -1,4 +1,5 @@
 ﻿using ChessElements.Extensions;
+using ChessElements.Moves;
 using ChessInfrastructure.Base;
 using ChessInfrastructure.Interfaces;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace ChessElements.Pieces
             var tile = dropedTile as Tile;
             if (tile == null) return null;
 
-            var enemyMoves = GetAllEnemyPiecesMoveList(tile);
+            var enemyMoves = GetAllEnemyPiecesMoveList(tile.Piece.Color);
             var list = new List<MoveBase>();
             var i = 1;
             //Diagonal Moves
@@ -66,15 +67,17 @@ namespace ChessElements.Pieces
             var nnhcolumn = (int)tile.Column;
             tile.GetNextMove(ref list, nnhrow, nnhcolumn);
 
-            var finalList = list.Except(enemyMoves);
+            var moveList = list.Except(enemyMoves,new MoveComparer());
 
+            var finalList = moveList.SkipWhile(m => m.GetType() == typeof(AttackMove) && !GetAllEnemyPiecesMoveList(tile.Piece.Color).Any(em => em.Row == m.Row && em.Column == m.Column));
+            
             return finalList.ToList();
         }
-
-        private IEnumerable<MoveBase> GetAllEnemyPiecesMoveList(Tile kingTile)
+        
+        private IEnumerable<MoveBase> GetAllEnemyPiecesMoveList(PieceColor color)
         {
             var list = new List<MoveBase>();
-            var enemyTiles = ChessBoard.Instance.Board.Where(x => (!x.IsEmptyTile && x.Piece.Color != kingTile.Piece.Color && x.Piece.Type != PieceType.King));
+            var enemyTiles = ChessBoard.Instance.Board.Where(x => (!x.IsEmptyTile && x.Piece.Color != color && x.Piece.Type != PieceType.King));
 
             foreach (var tile in enemyTiles)
             {

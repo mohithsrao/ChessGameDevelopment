@@ -85,10 +85,7 @@ namespace ChessElements.Pieces
             var diagTile = list[i, j];
             if (diagTile != null)
             {
-                if (!diagTile.IsEmptyTile && diagTile.Piece.Color != tile.Piece.Color)
-                {
-                    return diagTile;
-                }
+                return diagTile;
             }
             return null;
         }

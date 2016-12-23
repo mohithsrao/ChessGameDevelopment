@@ -45,6 +45,7 @@
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Extensions\TileExtensions.cs" />
     <Compile Include="Moves\AttackMove.cs" />
+    <Compile Include="Moves\MoveComparer.cs" />
     <Compile Include="Moves\NormalMove.cs" />
     <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\King.cs" />
