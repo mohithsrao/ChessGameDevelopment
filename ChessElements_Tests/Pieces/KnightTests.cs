@@ -12,14 +12,14 @@ namespace ChessElements.Pieces.Tests
         public void Knight_GetMoveList_Test()
         {
             //Test for empty tile
-            var tile = new Tile(ChessInfrastructure.ChessEnums.Rows.One, ChessInfrastructure.ChessEnums.Columns.A);
-            var piece = new Knight(ChessInfrastructure.ChessEnums.PieceColor.Black);
+            var tile = new Tile(ChessEnums.Rows.One, ChessEnums.Columns.A);
+            var piece = new Knight(ChessEnums.PieceColor.Black);
 
             Assert.IsNull(piece.GetMoveList(tile));
 
             //Test for Corner tiles A1 with Knight
-            var A1piece = new Knight(ChessInfrastructure.ChessEnums.PieceColor.Black);
-            var A1tile = new Tile(ChessInfrastructure.ChessEnums.Rows.One, ChessInfrastructure.ChessEnums.Columns.A, A1piece);
+            var A1piece = new Knight(ChessEnums.PieceColor.Black);
+            var A1tile = new Tile(ChessEnums.Rows.One, ChessEnums.Columns.A, A1piece);
 
             var A1List = A1piece.GetMoveList(A1tile);
             //A1List.AssignBackground();
@@ -30,8 +30,8 @@ namespace ChessElements.Pieces.Tests
             Assert.IsTrue(A1List.Where(x => x.Type == ChessEnums.MoveType.Attack).Count() == 1);
 
             //Test for Corner tiles A8 with Knight
-            var A8piece = new Knight(ChessInfrastructure.ChessEnums.PieceColor.Black);
-            var A8tile = new Tile(ChessInfrastructure.ChessEnums.Rows.Eight, ChessInfrastructure.ChessEnums.Columns.A, A8piece);
+            var A8piece = new Knight(ChessEnums.PieceColor.Black);
+            var A8tile = new Tile(ChessEnums.Rows.Eight, ChessEnums.Columns.A, A8piece);
 
             var A8List = A1piece.GetMoveList(A8tile);
             //A8List.AssignBackground();
@@ -41,8 +41,8 @@ namespace ChessElements.Pieces.Tests
             Assert.IsTrue(A8List.Where(x => x.Type == ChessEnums.MoveType.Normal).Count() == 1);
 
             //Test for Corner tiles H1 with Knight
-            var H1piece = new Knight(ChessInfrastructure.ChessEnums.PieceColor.Black);
-            var H1tile = new Tile(ChessInfrastructure.ChessEnums.Rows.One, ChessInfrastructure.ChessEnums.Columns.H, H1piece);
+            var H1piece = new Knight(ChessEnums.PieceColor.Black);
+            var H1tile = new Tile(ChessEnums.Rows.One, ChessEnums.Columns.H, H1piece);
 
             var H1List = A1piece.GetMoveList(H1tile);
             //H1List.AssignBackground();
@@ -54,8 +54,8 @@ namespace ChessElements.Pieces.Tests
 
 
             //Test for Corner tiles H8 with Knight
-            var H8piece = new Knight(ChessInfrastructure.ChessEnums.PieceColor.Black);
-            var H8tile = new Tile(ChessInfrastructure.ChessEnums.Rows.Eight, ChessInfrastructure.ChessEnums.Columns.H, H8piece);
+            var H8piece = new Knight(ChessEnums.PieceColor.Black);
+            var H8tile = new Tile(ChessEnums.Rows.Eight, ChessEnums.Columns.H, H8piece);
 
             var H8List = A1piece.GetMoveList(H8tile);
             //H8List.AssignBackground();

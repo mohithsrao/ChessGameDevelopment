@@ -3,7 +3,7 @@ using ChessInfrastructure;
 
 namespace ChessElements.Moves
 {
-    class AttackMove : MoveBase
+    public class AttackMove : MoveBase
     {
         public AttackMove(ChessEnums.Rows _row, ChessEnums.Columns _column, PieceBase _attackedPiece) : base(_row, _column)
         {
